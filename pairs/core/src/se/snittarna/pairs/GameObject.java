@@ -92,11 +92,11 @@ public abstract class GameObject {
 	}
 	
 	protected void setRotation(float rotation) {
-		sprite.setRotation(rotation);
+		sprite.setRotation((float) Math.toDegrees(rotation));
 	}
 	
 	protected float getRotation() {
-		return sprite.getRotation();
+		return (float) Math.toRadians(sprite.getRotation());
 	}
 	
 	public void draw(SpriteBatch batch) {
