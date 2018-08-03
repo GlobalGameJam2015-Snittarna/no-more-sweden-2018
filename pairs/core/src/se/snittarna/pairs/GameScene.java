@@ -40,6 +40,7 @@ public class GameScene extends Scene {
 		getCamera().setPosition(10 * 32, (float) (7.5 * 32));
 		
 		this.addObject(new Car(new Vector2()));
+		this.addObject(new Horse(new Vector2(100, 0)));
 	}
 	
 	public void update(float dt) {

@@ -5,18 +5,18 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
-public class Car extends GameObject implements Player {
-	private final float ACC = 100;
+public class Horse extends GameObject implements Player {
+	private final float ACC = 80;
 	private final float Cd = .001f;
-	private final float ALPHA = 3f;
+	private final float ALPHA = 5f;
 	private final float CdA = 1;
-	private final float baseSideFriction = 2;
+	private final float baseSideFriction = 1;
 	
 	private Vector2 speed;
 	private float omega;
 
-	public Car(Vector2 position) {
-		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture("car"), new Vector2(64, 64)));
+	public Horse(Vector2 position) {
+		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture("horsie"), new Vector2(64, 64)));
 		this.speed = new Vector2();
 	}
 	
