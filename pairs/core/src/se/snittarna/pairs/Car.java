@@ -10,7 +10,7 @@ public class Car extends GameObject implements Player {
 	private final float Cd = .001f;
 	private final float ALPHA = 3f;
 	private final float CdA = 1;
-	private final float baseSideFriction = 100;
+	private final float baseSideFriction = 1;
 	
 	private Vector2 speed;
 	private float omega;
@@ -46,7 +46,16 @@ public class Car extends GameObject implements Player {
 		
 		omega -= Math.signum(omega) * omega * omega * CdA * dt;
 		
+		Vector2 left = new Vector2((float)Math.cos(Math.PI / 2  + this.getRotation()), (float)Math.sin(Math.PI / 2 + this.getRotation()));
+		Vector2 right = new Vector2((float)Math.cos(-Math.PI / 2  + this.getRotation()), (float)Math.sin(-Math.PI / 2 + this.getRotation()));
+
+		if (left.dot(speed) > 0) {
+			speed.sub(left.scl(dt * baseSideFriction * speed.len()));
+		}
 		
+		if (right.dot(speed) > 0) {
+			speed.sub(right.scl(dt * baseSideFriction * speed.len()));
+		}
 		
 		super.update(dt);
 	}
