@@ -1,3 +1,5 @@
 package se.snittarna.pairs;
 
-interface Player {}
+interface Player {
+	public void death();
+}
