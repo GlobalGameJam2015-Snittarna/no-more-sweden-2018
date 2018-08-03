@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 public class Car extends GameObject implements Player {
-	private final float ACC = 300;
-	private final float Cd = .03f;
+	private final float ACC = 100;
+	private final float Cd = .001f;
 	private final float ALPHA = 3f;
 	private final float CdA = 1;
+	private final float baseSideFriction = 100;
 	
 	private Vector2 speed;
 	private float omega;
@@ -45,7 +46,16 @@ public class Car extends GameObject implements Player {
 		
 		omega -= Math.signum(omega) * omega * omega * CdA * dt;
 		
+		
+		
 		super.update(dt);
+	}
+
+
+	@Override
+	public void death() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
