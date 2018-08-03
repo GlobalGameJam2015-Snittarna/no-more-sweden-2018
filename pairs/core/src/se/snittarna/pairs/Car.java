@@ -16,7 +16,7 @@ public class Car extends GameObject implements Player {
 	private float omega;
 
 	public Car(Vector2 position) {
-		super(position, new Vector2(32, 32), new Animation(AssetManager.getTexture("car"), new Vector2(32, 32)));
+		super(position, new Vector2(32*2, 32*2), new Animation(AssetManager.getTexture("car"), new Vector2(32*2, 32*2)));
 		this.speed = new Vector2();
 	}
 	

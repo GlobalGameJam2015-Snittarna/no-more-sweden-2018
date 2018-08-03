@@ -16,7 +16,6 @@ public class Obstacle extends GameObject {
 				}
 			}
 		}
-		
 		super.update(dt);
 	}
 }
