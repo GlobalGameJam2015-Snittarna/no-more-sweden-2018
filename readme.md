@@ -10,4 +10,20 @@ Bilen och hästen är svåra att kontrollera för att göra rundorna korta.
 
 Bilens headlights lyser upp vägen för de båda.
 
+todo list
+
+ruben-
+
+- ljus
+- spelar kontrol
+- ljud effekter
+- juice
+
+packaren-
+
+- grafik
+- level och hinder logik
+- ui
+- power-up
+- jucie
 
