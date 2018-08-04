@@ -119,4 +119,8 @@ public abstract class GameObject {
 		this.position = position.cpy();
 		this.sprite.setPosition(this.position.x, this.position.y);
 	}
+
+	public void onAdd() {
+		
+	}
 }

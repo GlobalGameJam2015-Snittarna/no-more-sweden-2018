@@ -60,6 +60,7 @@ public abstract class Scene {
 		for (GameObject g : toAdd) {
 			objects.add(g);
 			g.setScene(this);
+			g.onAdd();
 		}
 		for (GameObject g : toRemove) {
 			objects.remove(g);
