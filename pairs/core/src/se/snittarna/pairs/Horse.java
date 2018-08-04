@@ -37,7 +37,6 @@ public class Horse extends Player {
 		if (timeTilPlay <= 0) {
 			timeTilPlay = (float)random.nextGaussian() * 3 + 10;
 			AssetManager.getSound("horse.ogg").play();
-			System.out.println(timeTilPlay);
 		}
 		
 		super.update(dt);

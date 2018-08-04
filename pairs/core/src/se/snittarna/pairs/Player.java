@@ -94,7 +94,6 @@ abstract class Player extends GameObject {
 		speed.add(drag);
 		
 		omega -= Math.signum(omega) * omega * omega * CdA * dt;
-		System.out.println(Math.signum(omega) * omega * omega * CdA * dt);
 		
 		Vector2 left = new Vector2((float)Math.cos(Math.PI / 2  + this.getRotation()), (float)Math.sin(Math.PI / 2 + this.getRotation()));
 		Vector2 right = new Vector2((float)Math.cos(-Math.PI / 2  + this.getRotation()), (float)Math.sin(-Math.PI / 2 + this.getRotation()));
