@@ -8,6 +8,7 @@ public class Tile extends GameObject {
 
 	public Tile(Vector2 position, String type) {
 		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture("sand"), new Vector2(64, 64)));
+		setOrder(-1);
 	}
 	
 	public void update(float dt) {

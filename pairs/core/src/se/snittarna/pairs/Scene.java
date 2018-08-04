@@ -1,6 +1,7 @@
 package se.snittarna.pairs;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -71,6 +72,13 @@ public abstract class Scene {
 		for (GameObject g : objects) {
 			g.update(dt);
 		}
+		
+		this.objects.sort(new Comparator<GameObject>() {
+		    @Override
+		    public int compare(GameObject m1, GameObject m2) {
+		        return (m1.getOrder() > m2.getOrder()) ? 1 : -1;
+		     }
+		});
 	}
 	
 	/**
