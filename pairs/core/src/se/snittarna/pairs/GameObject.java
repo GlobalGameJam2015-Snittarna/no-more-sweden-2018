@@ -8,6 +8,8 @@ public abstract class GameObject {
 	private Vector2 position, size, origin;
 	private Scene scene;
 	
+	private float order;
+	
 	public Scene getScene() {
 		return scene;
 	}
@@ -119,7 +121,15 @@ public abstract class GameObject {
 		this.position = position.cpy();
 		this.sprite.setPosition(this.position.x, this.position.y);
 	}
-
+	
+	public void setOrder(float order) {
+		this.order = order;
+	}
+	
+	public float getOrder() {
+		return order;
+	}
+	
 	public void onAdd() {
 		
 	}

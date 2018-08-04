@@ -23,12 +23,12 @@ public class StartScreen extends Scene {
 		delay += 2*dt;
 		
 		
-		/*boolean controllerNext = false;
+		boolean controllerNext = false;
 		for (Controller c : Controllers.getControllers()) if (c.getButton(0)) controllerNext = true;
 		
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE) || controllerNext ) {
 			Game.setCurrentScene(new GameScene());
-		}*/
+		}
 		
 		super.update(dt);
 	}
