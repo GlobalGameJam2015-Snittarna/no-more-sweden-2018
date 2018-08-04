@@ -23,6 +23,7 @@ public class Level extends GameObject {
 	public void restartLevel() {
 		for(int i = 0; 640/64 > i; i++) {
 			getScene().addObject(new Tile(new Vector2(i*64, 480-64), "sand"));
+			getScene().addObject(new Tile(new Vector2(i*64, 480), "sand"));
 		}
 		for(int y = 0; y < 480/64; y++) {
 			for(int x = 0; x < 640/64; x++) {
