@@ -46,10 +46,12 @@ public class Level extends GameObject {
 			}
 		}
 		
-		for(int i = -1; i < lightLength; i++) {
-			for (int j = 0; j < 2; j++) {
-				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*32 + (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*32 - (float)Math.cos(r) * 8));
-				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*32 - (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*32 + (float)Math.cos(r) * 8));
+		final int carLength = 40;
+		
+		for(int i = 0; i < lightLength; i++) {
+			for (int j = -1; j < 2; j++) {
+				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*carLength + (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*carLength - (float)Math.cos(r) * 8));
+				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*carLength - (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*carLength + (float)Math.cos(r) * 8));
 			}
 			//ps.add(new Vector2(p.x+(float)Math.cos(r-0.2f)*i + (float)Math.cos(r)*64, p.y+(float)Math.sin(r-0.2f)*i + (float)Math.sin(r)*64));
 			//ps.add(new Vector2(p.x+(float)Math.cos(r+0.2f)*i + (float)Math.cos(r)*64, p.y+(float)Math.sin(r+0.2f)*i + (float)Math.sin(r)*64));
