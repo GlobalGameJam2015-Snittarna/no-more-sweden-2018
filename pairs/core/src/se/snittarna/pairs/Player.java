@@ -24,6 +24,11 @@ abstract class Player extends GameObject {
 		this.speed = new Vector2();
 		
 		this.controllerIndex = controllerIndex;
+		
+		if (controllerIndex >= Controllers.getControllers().size) {
+			this.controllerIndex = -1;
+			System.out.println("not enough controllers, using keyboard");
+		}
 	}
 	
 	/**
