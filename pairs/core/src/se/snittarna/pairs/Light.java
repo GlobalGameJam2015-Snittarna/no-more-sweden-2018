@@ -47,7 +47,7 @@ public class Light extends GameObject{
 				}
 
 				if(c) a.setColor(0, 0, 0, 0);
-				else a.setColor(0, 0, 0, 0.97f);
+				else a.setColor(0, 0, 0, 0.90f);
 				a.setPosition(x*8, y*8);
 				a.draw(batch);
 			}
@@ -56,7 +56,7 @@ public class Light extends GameObject{
 	}
 	
 	public void draw(SpriteBatch batch) {
-		drawLight(batch);
+		//drawLight(batch);
 		super.draw(batch);
 	}
 }
