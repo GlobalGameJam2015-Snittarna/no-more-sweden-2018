@@ -18,6 +18,8 @@ public class Tile extends GameObject {
 				speed = ((Level) g).getSpeed();
 			}
 		}
+		
+		if(getPosition().y <= -64) getScene().removeObject(this);
 		super.update(dt);
 	}
 	

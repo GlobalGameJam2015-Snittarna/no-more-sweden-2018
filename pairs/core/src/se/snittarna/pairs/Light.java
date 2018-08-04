@@ -47,7 +47,7 @@ public class Light extends GameObject{
 				}
 
 				if(c) a.setColor(0, 0, 0, 0);
-				else a.setColor(0, 0, 0, 0.8f);
+				else a.setColor(0, 0, 0, 0.97f);
 				a.setPosition(x*8, y*8);
 				a.draw(batch);
 			}
