@@ -36,10 +36,10 @@ public class GameScene extends Scene {
 		random = new Random();
 		
 		getCamera().setPosition(10 * 32, (float) (7.5 * 32));
-		
+		addObject(new Level());
 		this.addObject(new Car(new Vector2(320, 200)));
 		this.addObject(new Horse(new Vector2(100, 0)));
-		addObject(new Level());
+		this.addObject(new Light());
 	}
 	
 	public void update(float dt) {
