@@ -39,6 +39,7 @@ public class GameScene extends Scene {
 		
 		this.addObject(new Car(new Vector2()));
 		this.addObject(new Horse(new Vector2(100, 0)));
+		addObject(new Level());
 	}
 	
 	public void update(float dt) {

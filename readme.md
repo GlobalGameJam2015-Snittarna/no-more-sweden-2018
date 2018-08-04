@@ -1,4 +1,6 @@
-## PAIRS
+# PAIRS
+
+## Idé
 
 En häst och en bil (tesla) samarbetar för att komma så långt som möjligt på en bana.
 
@@ -10,20 +12,19 @@ Bilen och hästen är svåra att kontrollera för att göra rundorna korta.
 
 Bilens headlights lyser upp vägen för de båda.
 
-todo list
+## todo list
 
-ruben-
+### Ruben
 
-- ljus
-- spelar kontrol
-- ljud effekter
+- spelarkontrol
+- ljudeffekter
 - juice
+- ui
 
-packaren-
+### Packaren
 
 - grafik
-- level och hinder logik
-- ui
+- level- och hinderlogik
 - power-up
 - jucie
-
+- ljus
