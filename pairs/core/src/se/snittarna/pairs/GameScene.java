@@ -37,7 +37,7 @@ public class GameScene extends Scene {
 		
 		getCamera().setPosition(10 * 32, (float) (7.5 * 32));
 		
-		this.addObject(new Car(new Vector2()));
+		this.addObject(new Car(new Vector2(320, 200)));
 		this.addObject(new Horse(new Vector2(100, 0)));
 		addObject(new Level());
 	}
