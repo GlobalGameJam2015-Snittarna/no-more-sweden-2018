@@ -17,14 +17,19 @@ public class StartScreen extends Scene {
 	
 	public void update(float dt) {
 		for (Controller controller : Controllers.getControllers()) {
-			if(delay > 1) if(controller.getButton(7)) Game.setCurrentScene(new GameScene());
+			if(delay > 1 && (controller.getButton(7) || Gdx.input.isKeyJustPressed(Keys.SPACE))) Game.setCurrentScene(new GameScene());
 		}
 		
 		delay += 2*dt;
 		
-		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+		
+		/*boolean controllerNext = false;
+		for (Controller c : Controllers.getControllers()) if (c.getButton(0)) controllerNext = true;
+		
+		if(Gdx.input.isKeyJustPressed(Keys.SPACE) || controllerNext ) {
 			Game.setCurrentScene(new GameScene());
-		}
+		}*/
+		
 		super.update(dt);
 	}
 	

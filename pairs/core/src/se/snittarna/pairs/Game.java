@@ -3,6 +3,7 @@ package se.snittarna.pairs;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -53,6 +54,10 @@ public class Game extends ApplicationAdapter {
 		currentScene = new StartScreen(); // new GameScene();
 		
 		uiCam = new OrthographicCamera(330, 180);
+		
+		Music music = Gdx.audio.newMusic(Gdx.files.internal("pairs-song.wav"));
+		music.setLooping(true);
+		music.play();
 	}
 
 	@Override
