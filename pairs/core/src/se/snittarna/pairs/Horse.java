@@ -23,7 +23,7 @@ public class Horse extends Player {
 		baseSideFriction = 1;
 		
 		random = new Random();
-		timeTilPlay = (float)random.nextGaussian() * 3 + 10;
+		timeTilPlay = 0;
 	}
 	
 	public void onAdd() {

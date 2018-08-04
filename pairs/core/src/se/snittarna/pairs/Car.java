@@ -1,7 +1,5 @@
 package se.snittarna.pairs;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 
 public class Car extends Player {

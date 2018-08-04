@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Vector2;
 public class GameScene extends Scene {
 	
 	public static boolean gameOver;
-	private boolean firstRound;
 	
 	private float score;
 	
