@@ -5,9 +5,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Tile extends GameObject {
 	private float speed;
-
+	
 	public Tile(Vector2 position, String type) {
-		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture(type), new Vector2(64, 64)));
+		super(position, new Vector2(64, 65), new Animation(AssetManager.getTexture(type), new Vector2(64, 65)));
 		setOrder(-1);
 	}
 	

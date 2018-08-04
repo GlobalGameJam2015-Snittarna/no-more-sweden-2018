@@ -8,13 +8,22 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Level extends GameObject {	
 	boolean hasStarted;
+	
 	float worldSpeed = 0;
+	
+	private float addBackgroundCount;
+	private float addBackgroundCountMax;
+	
 	public Level() {
 		super(new Vector2(0, 0), new Vector2(1, 1), new Animation(new Sprite(AssetManager.getTexture("plot"))));
-		worldSpeed = 2;
+		addBackgroundCount = addBackgroundCountMax;
+		worldSpeed = 8;
 	}
 	
 	public void restartLevel() {
+		for(int i = 0; 640/64 > i; i++) {
+			getScene().addObject(new Tile(new Vector2(i*64, 480-64), "sand"));
+		}
 		for(int y = 0; y < 480/64; y++) {
 			for(int x = 0; x < 640/64; x++) {
 				getScene().addObject(new Tile(new Vector2(x*64, y*64), "sand"));
@@ -26,6 +35,15 @@ public class Level extends GameObject {
 		if(!hasStarted) {
 			restartLevel();
 			hasStarted = true;
+		}
+		
+		addBackgroundCountMax = 64-(int)worldSpeed*dt;
+		addBackgroundCount += 1;
+		if(addBackgroundCount >= addBackgroundCountMax) {
+			for(int i = 0; 640/64 > i; i++) {
+				getScene().addObject(new Tile(new Vector2(i*64, 480), "sand"));
+			}
+			addBackgroundCount = 0;
 		}
 		super.update(dt);
 	}
