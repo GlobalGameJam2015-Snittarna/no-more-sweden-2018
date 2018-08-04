@@ -24,33 +24,32 @@ public class Light extends GameObject{
 		for(GameObject g : getScene().getObjects()) {
 			if(g instanceof Car) {
 				r = g.getRotation();
-				p = g.getPosition().cpy();
+				p = g.getPosition().add(new Vector2(1, 1).scl(32));
 			}
 		}
 		
-		final int carLength = 40;
+		Vector2 carPointingVector = Utils.vectorFromAngle(r);
 		
-		for(int i = 0; i < lightLength; i++) {
-			for (int j = -1; j < 2; j++) {
-				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*carLength + (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*carLength - (float)Math.cos(r) * 8));
-				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*carLength - (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*carLength + (float)Math.cos(r) * 8));
-			}
-		}
+		p.add(carPointingVector.cpy().scl(32));
+		
+		
+		Vector2 v = new Vector2();
 		
 		for(int y = 0; y < 480/8; y++) {
 			for(int x = 0; x < 640/8; x++) {
 				boolean c = false;
 				
-				for(Vector2 v : ps) {
-					if(new Rectangle((int)v.x, (int)v.y, 8, 8).collision(new Rectangle(x*8, y*8, 8, 8))) {
-						c = true;
-					}
-				}
+				boolean shouldDraw = true;
+				
+				v.set(x, y).scl(8).sub(p);
+				
+				if (v.len() < 250 && v.nor().dot(carPointingVector) > .9) shouldDraw = false;
 
-				if(c) a.setColor(0, 0, 0, 0);
-				else a.setColor(0, 0, 0, 0.90f);
-				a.setPosition(x*8, y*8);
-				a.draw(batch);
+				if (shouldDraw) {
+					a.setColor(0, 0, 0, 0.90f);
+					a.setPosition(x*8, y*8);
+					a.draw(batch);
+				}
 			}
 		}
 		ps.clear();
