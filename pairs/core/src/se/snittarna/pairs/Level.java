@@ -34,7 +34,7 @@ public class Level extends GameObject {
 	
 	public void drawLight(SpriteBatch batch) {
 		float r = 0;
-		int lightLength = 8;
+		int lightLength = 64;
 		Vector2 p = new Vector2(0, 0);
 		
 		ArrayList<Vector2> ps = new ArrayList<Vector2>();
@@ -47,15 +47,16 @@ public class Level extends GameObject {
 		}
 		
 		for(int i = 0; i < lightLength; i++) {
-			ps.add(new Vector2(p.x+(float)Math.cos(r)*i, p.y+(float)Math.cos(r)*i));
+			ps.add(new Vector2(p.x+(float)Math.cos(r)*i, p.y+(float)Math.sin(r)*i));
+			ps.add(new Vector2(p.x+(float)Math.cos(r-0.2f)*i, p.y+(float)Math.sin(r-0.2f)*i));
+			ps.add(new Vector2(p.x+(float)Math.cos(r+0.2f)*i, p.y+(float)Math.sin(r+0.2f)*i));
 		}
 		
 		for(int y = 0; y < 480/4; y++) {
 			for(int x = 0; x < 640/4; x++) {
 				boolean c = false;
+				
 				for(Vector2 v : ps) {
-					System.out.println("line: " + v.x + " | " + v.y);
-					System.out.println("light: " + x*4 + " | " + y*4 +  " | " + 4 +  " | " + 4);
 					if(new Rectangle((int)v.x, (int)v.y, 4, 4).collision(new Rectangle(x*4, y*4, 4, 4))) {
 						c = true;
 					}
@@ -63,12 +64,11 @@ public class Level extends GameObject {
 
 				if(c) a.setColor(0, 0, 0, 0);
 				else a.setColor(0, 0, 0, 0.8f);
-				
 				a.setPosition(x*4, y*4);
 				a.draw(batch);
 			}
-			ps.clear();
 		}
+		ps.clear();
 	}
 	
 	public void draw(SpriteBatch batch) {
