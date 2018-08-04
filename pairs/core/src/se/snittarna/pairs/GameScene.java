@@ -19,8 +19,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScene extends Scene {
-	private final int MAX_SCORE = 100;
-	private final float MAX_ROUND_TIME = 10;
 	
 	public static boolean gameOver;
 	private boolean firstRound;
