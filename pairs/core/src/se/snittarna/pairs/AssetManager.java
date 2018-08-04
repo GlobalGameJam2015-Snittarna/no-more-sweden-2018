@@ -10,13 +10,22 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class AssetManager {
 	/**
 	 * loads the spritesheet (assets/spritesheet.png) and the list of textures (assets/textures.txt)
 	 */
 	public static BitmapFont font = new BitmapFont();
+	
 	public static void load() {
+		FreeTypeFontGenerator g = new FreeTypeFontGenerator(Gdx.files.internal("RobotoMono-Regular.ttf"));
+		FreeTypeFontParameter param = new FreeTypeFontParameter();
+		param.size = 20;
+		font = g.generateFont(param);
+
+		
 		textureRegions = new HashMap<String, TextureRegion>();
 		spriteSheet = new Texture("spritesheet.png");
 		
