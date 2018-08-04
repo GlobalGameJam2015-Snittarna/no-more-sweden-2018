@@ -85,6 +85,6 @@ abstract class Player extends GameObject {
 			speed.sub(right.scl(dt * baseSideFriction * speed.len()));
 		}
 	}
-
+	
 	protected void death() {}
 }

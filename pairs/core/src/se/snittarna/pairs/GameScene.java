@@ -45,8 +45,6 @@ public class GameScene extends Scene {
 	public void update(float dt) {
 		getCamera().update(dt);
 		
-		
-		
 		super.update(dt);
 	}
 }

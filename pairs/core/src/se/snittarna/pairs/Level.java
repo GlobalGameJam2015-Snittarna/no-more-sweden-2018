@@ -5,9 +5,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Level extends GameObject {
+	Animation a = new Animation(new Sprite(AssetManager.getTexture("plot")));
 	
 	public Level() {
-		super(new Vector2(0, 0), new Vector2(0, 0), new Animation(new Sprite(AssetManager.getTexture("plot"))));
+		super(new Vector2(0, 0), new Vector2(1, 1), new Animation(new Sprite(AssetManager.getTexture("plot"))));
+		
+		a.setSize(4, 4);
 	}
 
 	public void update(float dt) {
@@ -28,12 +31,18 @@ public class Level extends GameObject {
 	}
 	
 	public void drawLight(SpriteBatch batch) {
-		for(int y = 0; y < 480; y++) {
-			for(int x = 0; x < 640; x++) {
-				Animation a = new Animation(new Sprite(AssetManager.getTexture("plot")));
-				a.setColor(1, 1, 1, 1);
-				a.setSize(1, 1);
-				
+		float r = 0;
+
+		for(GameObject g : getScene().getObjects()) {
+			if(g instanceof Car) {
+				r = g.getRotation();
+			}
+		}
+		
+		a.setColor(0, 0, 0, 0.7f);
+		for(int y = 0; y < 480/4; y++) {
+			for(int x = 0; x < 640/4; x++) {
+				a.setPosition(x*4, y*4);
 				a.draw(batch);
 			}
 		}
