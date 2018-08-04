@@ -25,4 +25,12 @@ public class Level {
 			s.addObject(new Obstacle(position, new Vector2(64, 64), new Animation(AssetManager.getTexture(g), new Vector2(32*2, 32*2))));
 		}
 	}
+	
+	public void drawLight() {
+		for(int y = 0; y < 480; y++) {
+			for(int x = 0; x < 640; x++) {
+				
+			}
+		}
+	}
 }
