@@ -20,6 +20,7 @@ public class Light extends GameObject{
 		int lightLength = 64*2;
 		Vector2 p = new Vector2(0, 0);
 		reg += 1;
+		
 		for(GameObject g : getScene().getObjects()) {
 			if(g instanceof Car) {
 				r = g.getRotation();
@@ -56,7 +57,7 @@ public class Light extends GameObject{
 	}
 	
 	public void draw(SpriteBatch batch) {
-		//drawLight(batch);
+		drawLight(batch);
 		super.draw(batch);
 	}
 }
