@@ -24,6 +24,7 @@ public class Level extends GameObject {
 	public void update(float dt) {
 		if(!hasStarted) {
 			restartLevel();
+			hasStarted = true;
 		}
 		super.update(dt);
 	}
