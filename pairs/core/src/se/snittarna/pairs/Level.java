@@ -47,7 +47,8 @@ public class Level extends GameObject {
 		}
 		
 		for(int i = 0; i < lightLength; i++) {
-			ps.add(new Vector2(p.x+(float)Math.cos(r)*i, p.y+(float)Math.sin(r)*i));
+			ps.add(new Vector2((p.x+12)+(float)Math.cos(r)*i + (float)Math.cos(r)*64, (p.y+12)+(float)Math.sin(r)*i+ (float)Math.sin(r)*64));
+			
 			ps.add(new Vector2(p.x+(float)Math.cos(r-0.2f)*i, p.y+(float)Math.sin(r-0.2f)*i));
 			ps.add(new Vector2(p.x+(float)Math.cos(r+0.2f)*i, p.y+(float)Math.sin(r+0.2f)*i));
 		}
