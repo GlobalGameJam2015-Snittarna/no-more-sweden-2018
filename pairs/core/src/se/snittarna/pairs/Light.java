@@ -11,6 +11,7 @@ public class Light extends GameObject{
 	public Light() {
 		super(new Vector2(0, 0), new Vector2(0, 0), new Animation(new Sprite(AssetManager.getTexture("plot"))));
 		a.setSize(8, 8);
+		this.setOrder(10);
 	}
 	ArrayList<Vector2> ps = new ArrayList<Vector2>();
 	int reg = 0;

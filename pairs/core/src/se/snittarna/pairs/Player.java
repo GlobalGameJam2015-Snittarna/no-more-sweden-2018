@@ -23,7 +23,7 @@ abstract class Player extends GameObject {
 	public Player(Vector2 position, Vector2 size, Animation sprite, int controllerIndex) {
 		super(position, size, sprite);
 		this.speed = new Vector2();
-		
+		this.setOrder(1);
 		this.controllerIndex = controllerIndex;
 		
 		if (controllerIndex >= Controllers.getControllers().size) {
