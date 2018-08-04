@@ -12,7 +12,7 @@ public class Level extends GameObject {
 	public Level() {
 		super(new Vector2(0, 0), new Vector2(1, 1), new Animation(new Sprite(AssetManager.getTexture("plot"))));
 		
-		a.setSize(4, 4);
+		a.setSize(8, 8);
 	}
 
 	public void update(float dt) {
@@ -32,13 +32,13 @@ public class Level extends GameObject {
 		}
 	}
 	
+	ArrayList<Vector2> ps = new ArrayList<Vector2>();
+	int reg = 0;
 	public void drawLight(SpriteBatch batch) {
 		float r = 0;
-		int lightLength = 64;
+		int lightLength = 64*2;
 		Vector2 p = new Vector2(0, 0);
-		
-		ArrayList<Vector2> ps = new ArrayList<Vector2>();
-		
+		reg += 1;
 		for(GameObject g : getScene().getObjects()) {
 			if(g instanceof Car) {
 				r = g.getRotation();
@@ -46,8 +46,8 @@ public class Level extends GameObject {
 			}
 		}
 		
-		for(int i = 0; i < lightLength; i++) {
-			for (int j = -1; j < 2; j++) {
+		for(int i = -1; i < lightLength; i++) {
+			for (int j = 0; j < 2; j++) {
 				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*32 + (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*32 - (float)Math.cos(r) * 8));
 				ps.add(new Vector2((p.x+32)+(float)Math.cos(r + j * 0.2f)*i + (float)Math.cos(r)*32 - (float)Math.sin(r) * 8, (p.y+32)+(float)Math.sin(r + j * 0.2f)*i + (float)Math.sin(r)*32 + (float)Math.cos(r) * 8));
 			}
@@ -55,19 +55,19 @@ public class Level extends GameObject {
 			//ps.add(new Vector2(p.x+(float)Math.cos(r+0.2f)*i + (float)Math.cos(r)*64, p.y+(float)Math.sin(r+0.2f)*i + (float)Math.sin(r)*64));
 		}
 		
-		for(int y = 0; y < 480/4; y++) {
-			for(int x = 0; x < 640/4; x++) {
+		for(int y = 0; y < 480/8; y++) {
+			for(int x = 0; x < 640/8; x++) {
 				boolean c = false;
 				
 				for(Vector2 v : ps) {
-					if(new Rectangle((int)v.x, (int)v.y, 4, 4).collision(new Rectangle(x*4, y*4, 4, 4))) {
+					if(new Rectangle((int)v.x, (int)v.y, 8, 8).collision(new Rectangle(x*8, y*8, 8, 8))) {
 						c = true;
 					}
 				}
 
 				if(c) a.setColor(0, 0, 0, 0);
 				else a.setColor(0, 0, 0, 0.8f);
-				a.setPosition(x*4, y*4);
+				a.setPosition(x*8, y*8);
 				a.draw(batch);
 			}
 		}
