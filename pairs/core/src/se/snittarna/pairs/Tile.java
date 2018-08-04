@@ -7,12 +7,18 @@ public class Tile extends GameObject {
 	private float speed;
 
 	public Tile(Vector2 position, String type) {
-		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture("sand"), new Vector2(64, 64)));
+		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture(type), new Vector2(64, 64)));
 		setOrder(-1);
 	}
 	
 	public void update(float dt) {
-		this.getPosition().add(0, -speed).scl(dt);
+		this.setPosition(new Vector2(getPosition().x, getPosition().y-speed*dt));
+		for(GameObject g : getScene().getObjects()) {
+			if(g instanceof Level) {
+				speed = ((Level) g).getSpeed();
+			}
+		}
+		super.update(dt);
 	}
 	
 	public void draw(SpriteBatch batch) {

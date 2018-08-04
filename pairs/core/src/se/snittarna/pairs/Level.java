@@ -8,9 +8,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Level extends GameObject {	
 	boolean hasStarted;
-	
+	float worldSpeed = 0;
 	public Level() {
 		super(new Vector2(0, 0), new Vector2(1, 1), new Animation(new Sprite(AssetManager.getTexture("plot"))));
+		worldSpeed = 2;
 	}
 	
 	public void restartLevel() {
@@ -44,5 +45,9 @@ public class Level extends GameObject {
 	
 	public void draw(SpriteBatch batch) {
 		super.draw(batch);
+	}
+	
+	public float getSpeed() {
+		return worldSpeed;
 	}
 }
