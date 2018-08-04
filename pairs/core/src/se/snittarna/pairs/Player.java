@@ -49,10 +49,16 @@ abstract class Player extends GameObject {
 		} else {
 			Controller c = Controllers.getControllers().get(controllerIndex);
 			
-			speed.add(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl((c.getAxis(5) + 1) / 2 * ACC * dt));
-			speed.sub(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl((c.getAxis(2) + 1) / 2 * ACC * dt));
-		
-			omega -= c.getAxis(0) * ALPHA * dt;
+			if (c.getAxis(5) != 0) {
+				speed.add(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl((c.getAxis(5) + 1) / 2 * ACC * dt));
+			}
+			if (c.getAxis(2) != 0) {
+				speed.sub(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl((c.getAxis(2) + 1) / 2 * ACC * dt));
+			}
+			
+			if (Math.abs(c.getAxis(0)) > 0.15f) {
+				omega -= c.getAxis(0) * ALPHA * dt;
+			}
  		}
 		
 		this.setPosition(this.getPosition().add(new Vector2(speed).scl(dt)));
