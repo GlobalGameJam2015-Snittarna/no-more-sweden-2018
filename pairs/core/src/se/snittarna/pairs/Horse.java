@@ -12,11 +12,15 @@ public class Horse extends Player {
 		super(position, new Vector2(64, 64), new Animation(AssetManager.getTexture("horsie"), new Vector2(64, 64)), 0);
 		
 		ACC = 200;
+		DECC = 200;
 		Cd = .005f;
 		ALPHA = 5f;
 		CdA = 1;
 		baseSideFriction = 1;
-		
+	}
+	
+	public void onAdd() {
+		AssetManager.getSound("horse.ogg").play();
 	}
 	
 	

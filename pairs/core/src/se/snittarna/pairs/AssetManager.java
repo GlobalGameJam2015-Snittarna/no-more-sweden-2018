@@ -64,7 +64,7 @@ public class AssetManager {
 		if (sounds.containsKey(name)) {
 			return sounds.get(name);
 		} else {
-			sounds.put(name, Gdx.audio.newSound(Gdx.files.internal(name + ".wav")));
+			sounds.put(name, Gdx.audio.newSound(Gdx.files.internal(name + (name.contains(".") ? "" : ".wav"))));
 			return sounds.get(name);
 		}
 	}

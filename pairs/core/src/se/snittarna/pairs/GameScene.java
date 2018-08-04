@@ -23,14 +23,11 @@ public class GameScene extends Scene {
 	public static boolean gameOver;
 	private boolean firstRound;
 	
+	private float score;
+	
 	private Random random;
 	
 	// (e du) god (eller) praxis
-	private int[] scores;
-	private int winningPlayer;
-	
-	private float roundTime;
-	private float nextRoundDelay;
 	
 	public GameScene() {
 		random = new Random();
@@ -42,9 +39,21 @@ public class GameScene extends Scene {
 		addObject(new Level());
 	}
 	
+	public void onResume() {
+		AssetManager.getSound("blip").play();
+	}
+	
 	public void update(float dt) {
 		getCamera().update(dt);
 		
+		score += 10f * dt;
+		
 		super.update(dt);
+	}
+	
+	public void drawUi(SpriteBatch batch) {
+		AssetManager.font.draw(batch, "score: " + (int)score, -160, 80);
+		
+		super.drawUi(batch);
 	}
 }

@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 abstract class Player extends GameObject {
 	protected float ACC = 100;
+	protected float DECC = 100;
 	protected float Cd = .001f;
 	protected float ALPHA = 3f;
 	protected float CdA = 1;
@@ -32,17 +33,34 @@ abstract class Player extends GameObject {
 	}
 	
 	/**
+	 * apply acceleration according to input, depending on the vehicles direction of movement and where it is pointing
+	 * @param input from -1 to 1
+	 */
+	private void accelerate(float input, float dt) {
+		Vector2 forward = Utils.vectorFromAngle(getRotation());
+		boolean goingForward = (forward.dot(speed) > 0);
+		
+		float a = (input >= 0 == goingForward ? ACC : DECC) * input;
+		
+		speed.add(forward.scl(a * dt));
+	}
+	
+	/**
 	 * do physics stuff according to input
 	 */
 	protected void move(float dt) {
 		if (controllerIndex == -1) {
+			float a = 0;
+			
 			if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-				speed.add(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl(ACC * dt));
+				a = 1;
 			}
 			
 			if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-				speed.sub(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl(ACC * dt));
+				a = -1;
 			}
+			
+			accelerate(a, dt);
 			
 			if (Gdx.input.isKeyPressed(Input.Keys.A)) {
 				omega += ALPHA * dt;
@@ -54,12 +72,15 @@ abstract class Player extends GameObject {
 		} else {
 			Controller c = Controllers.getControllers().get(controllerIndex);
 			
+			float a = 0;
 			if (c.getAxis(5) != 0) {
-				speed.add(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl((c.getAxis(5) + 1) / 2 * ACC * dt));
+				a += c.getAxis(5);
 			}
 			if (c.getAxis(2) != 0) {
-				speed.sub(new Vector2((float)Math.cos(getRotation()), (float)Math.sin(getRotation())).scl((c.getAxis(2) + 1) / 2 * ACC * dt));
+				a -= c.getAxis(2);
 			}
+			accelerate(a, dt);
+			
 			
 			if (Math.abs(c.getAxis(0)) > 0.15f) {
 				omega -= c.getAxis(0) * ALPHA * dt;

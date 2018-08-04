@@ -9,4 +9,8 @@ public class Utils {
 		float angle = (float) (random.nextFloat() * 2 * Math.PI);
 		return new Vector2((float)Math.cos(angle), (float)Math.sin(angle)).scl(lenght);
 	}
+	
+	public static Vector2 vectorFromAngle(float rads) {
+		return new Vector2((float)Math.cos(rads), (float)Math.sin(rads));
+	}
 }
