@@ -25,6 +25,7 @@ abstract class Player extends GameObject {
 		this.speed = new Vector2();
 		this.setOrder(1);
 		this.controllerIndex = controllerIndex;
+		this.setRotation((float)Math.PI / 2);
 		
 		if (controllerIndex >= Controllers.getControllers().size) {
 			this.controllerIndex = -1;
@@ -117,15 +118,21 @@ abstract class Player extends GameObject {
 	
 	public void update(float dt) {
 		if(GameScene.jumpToDeathScreen > 0) {
-			float speed = 0;
-			
-			for(GameObject g : getScene().getObjects()) {
-				if(g instanceof Level) 
-					speed = ((Level) g).getSpeed();
-			}
-			
-			setPosition(new Vector2(getPosition().x, getPosition().y-speed*dt));
+			this.speed.set(0, 0);
 		}
+		
+		for (GameObject g : getScene().getObjects()) {
+			if (g instanceof Level) {
+				float s = ((Level) g).getSpeed();
+				this.setPosition(this.getPosition().add(new Vector2(0, -s * dt)));
+			}
+		}
+		
+		System.out.println(getPosition().y);
+		if (getPosition().x < -30 || getPosition().x > 630 || getPosition().y < -50 || getPosition().y > 480) {
+			//GameScene.jumpToDeathScreen += 1;
+		}
+		
 		super.update(dt);
 	}
 	
