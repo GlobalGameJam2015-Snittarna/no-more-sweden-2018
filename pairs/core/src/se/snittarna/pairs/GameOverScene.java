@@ -18,10 +18,12 @@ public class GameOverScene extends Scene {
 	}
 	
 	public void update(float dt) {
-		// WOW fin KOD som FUNGERAR utan kontroller (M�N TRO)
+		// WOW fin KOD som FUNGERAR utan kontroller (M�N TRO)
+		// Space fungerar också, men bara när minst en kontroll är inkopplad :^))))
 		for (Controller controller : Controllers.getControllers()) {
-			if(delay > 1 && (controller.getButton(7) || Gdx.input.isKeyJustPressed(Keys.SPACE))) Game.setCurrentScene(new StartScreen());
+			if (delay > 1 && (controller.getButton(7) || Gdx.input.isKeyJustPressed(Keys.SPACE))) Game.setCurrentScene(new StartScreen());
 		}
+		if (delay > 1 && Gdx.input.isKeyJustPressed(Keys.SPACE)) Game.setCurrentScene(new StartScreen());
 		
 		delay += 2*dt;
 		
