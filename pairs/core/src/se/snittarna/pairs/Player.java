@@ -130,7 +130,7 @@ abstract class Player extends GameObject {
 		
 		System.out.println(getPosition().y);
 		if (getPosition().x < -30 || getPosition().x > 630 || getPosition().y < -50 || getPosition().y > 480) {
-			//GameScene.jumpToDeathScreen += 1;
+			GameScene.jumpToDeathScreen += 1;
 		}
 		
 		super.update(dt);

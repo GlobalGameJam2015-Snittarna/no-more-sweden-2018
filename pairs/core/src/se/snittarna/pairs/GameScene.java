@@ -64,7 +64,7 @@ public class GameScene extends Scene {
 		
 		boolean cont = false;
 		for (Controller controller : Controllers.getControllers()) {
-			if (controller.getButton(7)) cont = true;
+			if (controller.getButton(0)) cont = true;
 		}
 		if (jumpToDeathScreen > 10 && (Gdx.input.isKeyPressed(Keys.SPACE) || cont)) {
 			Game.setCurrentScene(new GameOverScene((int)score));
