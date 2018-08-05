@@ -105,6 +105,14 @@ abstract class Player extends GameObject {
 		if (right.dot(speed) > 0) {
 			speed.sub(right.scl(dt * baseSideFriction * speed.len()));
 		}
+		
+		for (GameObject g : getScene().getObjects()) {
+			if (g instanceof Level) {
+				float s = ((Level) g).getSpeed();
+				this.setPosition(this.getPosition().add(new Vector2(0, -s * dt)));
+			}
+		}
+		
 	}
 	
 	public void update(float dt) {
