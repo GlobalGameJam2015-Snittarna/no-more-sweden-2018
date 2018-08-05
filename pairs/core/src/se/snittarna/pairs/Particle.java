@@ -25,7 +25,14 @@ public class Particle extends GameObject {
 		lifetime -= dt;
 		if (lifetime <= 0) {
 			getScene().removeObject(this);
-			System.out.println("particle died");
+			//System.out.println("particle died");
+		}
+		
+		for (GameObject g : getScene().getObjects()) {
+			if (g instanceof Level) {
+				float s = ((Level) g).getSpeed();
+				this.setPosition(this.getPosition().add(new Vector2(0, -s * dt)));
+			}
 		}
 		
 		setScale(size * lifetime / .5f);

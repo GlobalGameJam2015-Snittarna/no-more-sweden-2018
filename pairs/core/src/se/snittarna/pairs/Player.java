@@ -1,9 +1,13 @@
 package se.snittarna.pairs;
 
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.Controllers;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.math.Vector2;
 
 abstract class Player extends GameObject {
@@ -18,6 +22,8 @@ abstract class Player extends GameObject {
 	private float omega;
 	
 	private int controllerIndex; // -1 för keyboard
+	
+	private Random random;
 
 	
 	public Player(Vector2 position, Vector2 size, Animation sprite, int controllerIndex) {
@@ -31,6 +37,11 @@ abstract class Player extends GameObject {
 			this.controllerIndex = -1;
 			System.out.println("not enough controllers, using keyboard");
 		}
+		
+		lastSpeed = new Vector2();
+		
+		random = new Random();
+		
 	}
 	
 	/**
@@ -76,10 +87,11 @@ abstract class Player extends GameObject {
 			float a = 0;
 			if (c.getAxis(5) != 0) {
 				a += c.getAxis(5);
-			}
+			} else a -= 1;
 			if (c.getAxis(2) != 0) {
 				a -= c.getAxis(2);
-			}
+			} else a +=1 ;
+			
 			accelerate(a, dt);
 			
 			
@@ -116,6 +128,8 @@ abstract class Player extends GameObject {
 		
 	}
 	
+	private Vector2 lastSpeed;
+	
 	public void update(float dt) {
 		if(GameScene.jumpToDeathScreen > 0) {
 			this.speed.set(0, 0);
@@ -128,10 +142,19 @@ abstract class Player extends GameObject {
 			}
 		}
 		
-		System.out.println(getPosition().y);
-		if (getPosition().x < -30 || getPosition().x > 630 || getPosition().y < -50 || getPosition().y > 480) {
+		if (getPosition().x < -60 || getPosition().x > 700 || getPosition().y < -70 || getPosition().y > 480) {
 			GameScene.jumpToDeathScreen += 1;
 		}
+		
+		float acc = lastSpeed.sub(speed).len();
+		
+		if (speed.len() > 3) {
+			getScene().addObject(new Particle(getPosition().add(new Vector2(32, 32)), 
+					speed.cpy().add(Utils.vectorFromAngle(getRotation() + (float)(Math.PI + random.nextGaussian() * .5f)).scl(speed.len() + (float)random.nextGaussian() * 3)),
+					new Color(1, .9f, .4f, 1), 4));
+		}
+		
+		lastSpeed = speed.cpy();
 		
 		super.update(dt);
 	}

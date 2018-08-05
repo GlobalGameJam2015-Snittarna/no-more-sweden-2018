@@ -47,7 +47,7 @@ public class Light extends GameObject{
 				if (v2.len() < 250 && v2.nor().dot(carPointingVector) > .9) shouldDraw = false;
 
 				if (shouldDraw) {
-					a.setColor(0, 0, 0, 0.95f);
+					a.setColor(0, 0, 0, 1f);
 					a.setPosition(x*8, y*8);
 					a.draw(batch);
 				}

@@ -10,7 +10,8 @@ import com.badlogic.gdx.math.Vector2;
 public class Level extends GameObject {	
 	boolean hasStarted;
 	
-	float worldSpeed = 0;
+	float worldSpeed;
+	float targetSpeed;
 	
 	private float addBackgroundCount;
 	private float addBackgroundCountMax;
@@ -28,9 +29,9 @@ public class Level extends GameObject {
 		setOrder(1);
 		
 		spawnObstacleCountMax = 128/2;
-		levelCountMax = 128+32;
+		levelCountMax = 80;
 		
-		worldSpeed = 0; 
+		targetSpeed = 16; 
 		currentLevel = 0;
 	}
 	
@@ -64,9 +65,11 @@ public class Level extends GameObject {
 		levelCount += 10*dt; 
 		if(levelCount >= levelCountMax-(currentLevel*2)) {
 			currentLevel += 1;
-			worldSpeed += 30;
+			targetSpeed += 15;
 			levelCount = 0;
 		}
+		
+		worldSpeed += (targetSpeed - worldSpeed) * .05f;
 		
 		spawnObstacleCount += 10*dt;
 		if(spawnObstacleCount >= spawnObstacleCountMax-currentLevel) {

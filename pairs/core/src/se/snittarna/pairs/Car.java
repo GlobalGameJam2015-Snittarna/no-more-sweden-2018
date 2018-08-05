@@ -13,6 +13,9 @@ public class Car extends Player {
 		ALPHA = 20f;
 		CdA = 10;
 		baseSideFriction = 2;
+
+		this.setOrder(10000);
+		this.getSprite().setAlpha(.5f);
 	}
 	
 	
