@@ -36,7 +36,6 @@ public class GameScene extends Scene {
 		this.addObject(horse);
 		
 		this.addObject(new Light());
-		this.addObject(new Powerup(new Vector2(50, 50)));
 	}
 	
 	public void onResume() {
