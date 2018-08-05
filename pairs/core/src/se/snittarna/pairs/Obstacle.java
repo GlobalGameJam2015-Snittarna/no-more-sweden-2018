@@ -16,7 +16,7 @@ public class Obstacle extends GameObject {
 			if(g instanceof Level) 
 				speed = ((Level) g).getSpeed();
 			if(g instanceof Player) {
-				if(g.getHitbox().collision(getHitbox())) {
+				if(g.getPosition().dst(getPosition()) <= 50) {
 					float score = ((GameScene) getScene()).getScore();
 					Game.setCurrentScene(new GameOverScene((int)score));
 				}

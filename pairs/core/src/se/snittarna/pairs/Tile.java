@@ -7,7 +7,7 @@ public class Tile extends GameObject {
 	private float speed;
 	
 	public Tile(Vector2 position, String type) {
-		super(position, new Vector2(64, 65), new Animation(AssetManager.getTexture(type), new Vector2(64, 65)));
+		super(position, new Vector2(64, 66), new Animation(AssetManager.getTexture(type), new Vector2(64, 66)));
 		setOrder(-1);
 	}
 	

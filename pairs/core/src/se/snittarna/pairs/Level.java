@@ -49,14 +49,15 @@ public class Level extends GameObject {
 			hasStarted = true;
 		}
 		
-		addBackgroundCountMax = 64-(int)worldSpeed*dt;
-		addBackgroundCount += 1;
+		addBackgroundCountMax = 64;
+		addBackgroundCount += 1+worldSpeed*dt;
 		if(addBackgroundCount >= addBackgroundCountMax) {
 			for(int i = 0; 640/64 > i; i++) {
 				getScene().addObject(new Tile(new Vector2(i*64, 480), "sand"));
 			}
 			addBackgroundCount = 0;
 		}
+		
 		levelCount += 10*dt; 
 		if(levelCount >= levelCountMax-(currentLevel*2)) {
 			currentLevel += 1;
