@@ -31,7 +31,7 @@ public class Horse extends Player {
 	
 	
 	public void update(float dt) {
-		move(dt);
+		if(GameScene.jumpToDeathScreen <= 0) move(dt);
 		timeTilPlay -= dt;
 
 		if (timeTilPlay <= 0) {

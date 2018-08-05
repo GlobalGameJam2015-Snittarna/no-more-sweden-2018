@@ -67,7 +67,7 @@ public class Level extends GameObject {
 		
 		spawnObstacleCount += 10*dt;
 		if(spawnObstacleCount >= spawnObstacleCountMax-currentLevel) {
-			Vector2 v = new Vector2(random(0, 600), random(480, 480+100));
+			Vector2 v = new Vector2(random(-300, 600), random(480, 480+100));
 			if(random(0, 2) == 1) {
 				addObstacle(v, 1);
 			} else {

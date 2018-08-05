@@ -13,6 +13,8 @@ public class StartScreen extends Scene {
 	public StartScreen() {
 		super();
 		delay = 0;
+		// lol dab
+		GameScene.jumpToDeathScreen = 0;
 	}
 	
 	public void update(float dt) {

@@ -17,7 +17,7 @@ public class Car extends Player {
 	
 	
 	public void update(float dt) {
-		move(dt);
+		if(GameScene.jumpToDeathScreen <= 0) move(dt);
 		
 		super.update(dt);
 	}

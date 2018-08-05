@@ -107,6 +107,20 @@ abstract class Player extends GameObject {
 		}
 	}
 	
+	public void update(float dt) {
+		if(GameScene.jumpToDeathScreen > 0) {
+			float speed = 0;
+			
+			for(GameObject g : getScene().getObjects()) {
+				if(g instanceof Level) 
+					speed = ((Level) g).getSpeed();
+			}
+			
+			setPosition(new Vector2(getPosition().x, getPosition().y-speed*dt));
+		}
+		super.update(dt);
+	}
+	
 	public void death() {
 		float score = ((GameScene) getScene()).getScore();
 		Game.setCurrentScene(new GameOverScene((int)score));

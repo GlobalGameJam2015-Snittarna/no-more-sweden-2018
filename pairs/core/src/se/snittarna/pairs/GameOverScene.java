@@ -18,6 +18,7 @@ public class GameOverScene extends Scene {
 	}
 	
 	public void update(float dt) {
+		// WOW fin KOD som FUNGERAR utan kontroller (MÅN TRO)
 		for (Controller controller : Controllers.getControllers()) {
 			if(delay > 1 && (controller.getButton(7) || Gdx.input.isKeyJustPressed(Keys.SPACE))) Game.setCurrentScene(new StartScreen());
 		}

@@ -17,8 +17,12 @@ public class Obstacle extends GameObject {
 				speed = ((Level) g).getSpeed();
 			if(g instanceof Player) {
 				if(g.getPosition().dst(getPosition()) <= 50) {
-					float score = ((GameScene) getScene()).getScore();
-					Game.setCurrentScene(new GameOverScene((int)score));
+					if(GameScene.jumpToDeathScreen >= 30) {
+						float score = ((GameScene) getScene()).getScore();
+						Game.setCurrentScene(new GameOverScene((int)score));
+						GameScene.jumpToDeathScreen += 10*dt;
+					}
+					GameScene.jumpToDeathScreen += 1;
 				}
 			}
 		}

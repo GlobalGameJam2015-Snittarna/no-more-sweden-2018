@@ -10,6 +10,7 @@ public class GameScene extends Scene {
 	public static boolean gameOver;
 	
 	private float score;
+	public static float jumpToDeathScreen;
 	
 	private Random random;
 	
@@ -47,7 +48,8 @@ public class GameScene extends Scene {
 		lastDt = dt;
 		
 		if (car.getPosition().dst(horse.getPosition()) < 40) {
-			Game.setCurrentScene(new GameOverScene((int)score));
+			if(jumpToDeathScreen >= 30) Game.setCurrentScene(new GameOverScene((int)score));
+			jumpToDeathScreen += 10*dt;
 		}
 	}
 	
@@ -56,6 +58,8 @@ public class GameScene extends Scene {
 	public void drawUi(SpriteBatch batch) {
 		AssetManager.font.draw(batch, "score: " + (int)score, -160, 80);
 		AssetManager.font.draw(batch, 1/lastDt + "", -160, 60);
+		
+		if(GameScene.jumpToDeathScreen > 0) AssetManager.font.draw(batch, "DEAD", 0, 0);
 		
 		super.drawUi(batch);
 	}
