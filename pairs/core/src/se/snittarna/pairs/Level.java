@@ -29,6 +29,9 @@ public class Level extends GameObject {
 		
 		spawnObstacleCountMax = 128/2;
 		levelCountMax = 128+32;
+		
+		worldSpeed = 0; 
+		currentLevel = 0;
 	}
 	
 	public void restartLevel() {
