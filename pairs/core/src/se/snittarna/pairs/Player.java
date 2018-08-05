@@ -107,5 +107,8 @@ abstract class Player extends GameObject {
 		}
 	}
 	
-	protected void death() {}
+	public void death() {
+		float score = ((GameScene) getScene()).getScore();
+		Game.setCurrentScene(new GameOverScene((int)score));
+	}
 }

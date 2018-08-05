@@ -29,8 +29,7 @@ public class Light extends GameObject{
 		}
 		
 		Vector2 carPointingVector = Utils.vectorFromAngle(r);
-		
-
+	
 		p.add(carPointingVector.cpy().scl(32));
 		
 		Vector2 v1 = new Vector2(), v2 = new Vector2();
@@ -41,7 +40,6 @@ public class Light extends GameObject{
 				
 				boolean shouldDraw = true;
 
-				
 				v1.set(x, y).scl(8).sub(p.cpy().add(new Vector2(0, 12).rotate((float) Math.toDegrees(r))));
 				v2.set(x, y).scl(8).sub(p.cpy().add(new Vector2(0, -12).rotate((float) Math.toDegrees(r))));
 				

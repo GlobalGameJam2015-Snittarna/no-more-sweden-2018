@@ -76,7 +76,7 @@ public abstract class Scene {
 		this.objects.sort(new Comparator<GameObject>() {
 		    @Override
 		    public int compare(GameObject m1, GameObject m2) {
-		        return (m1.getOrder() > m2.getOrder()) ? 1 : -1;
+		        return (m1.getOrder() >= m2.getOrder()) ? 1 : -1;
 		     }
 		});
 	}

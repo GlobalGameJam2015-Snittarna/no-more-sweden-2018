@@ -59,4 +59,8 @@ public class GameScene extends Scene {
 		
 		super.drawUi(batch);
 	}
+	
+	public float getScore() {
+		return score;
+	}
 }
